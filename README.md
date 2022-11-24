@@ -58,3 +58,13 @@ authenticated_endpoint = "{}/{}".format(endpoint, api_key)
 api_response = requests.get(authenticated_endpoint).json()
 pprint.pprint(api_response)
 ```
+## Streaming records
+
+In an earlier exercise, you codified the schema of products being sold by a store that you got from the marketing team’s REST API. If you don’t remember it, check the schema in this exercise. Now it’s time to stream some data to go with it. A convenience function, retrieve_products(), has been made available to you. It basically executes the last step of the previous exercise: it requires one positional argument, the name of a shop, and will return a list of all products related to that shop.
+  ```
+ # Use the convenience function to query the API
+tesco_items = retrieve_products("Tesco")
+
+singer.write_schema(stream_name="products", schema=schema,
+                    key_properties=[])
+  ```
